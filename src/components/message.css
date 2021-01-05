@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@700&display=swap');
+
 a {
     text-decoration: none;
     font-weight: 700;
@@ -11,7 +12,6 @@ a {
 }
 .msg {
     font-family: 'IBM Plex Sans', sans-serif;
-    background-color: #fff;
     color: #505050;
     font-size: 14px;
     line-height: 20px;
@@ -19,6 +19,10 @@ a {
     display: flex;
     width: 100%;
 }
+.msg_Transperent { background-color: transparent; }
+.msg_Biege { background-color: #FDF1E6; }
+.msg_Black { background-color: #1E1E1E; }
+
 .msg-ava {
     position: relative;
 }
@@ -27,9 +31,9 @@ a {
     content: '';
     background-color: #e1e1e1;
     width: 1px;
-    height: calc(100% - 42px);
+    height: calc(100% - 40px);
     left: 17px;
-    bottom: 4px;
+    bottom: 2px;
 }
 .msg-block {
     margin-left: 22px;
