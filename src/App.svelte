@@ -1,5 +1,6 @@
 <script>
 	import Message from './components/Message.svelte';
+	import Board from './components/Board.svelte';
 	import { beforeUpdate, afterUpdate } from 'svelte';
 	import { archiveMessages } from './components/message.storage.js';
 
@@ -35,29 +36,46 @@
 	function changeTheme () {
 		messages.map((msg) => msg.theme = theme );
 		messages = messages;
-		
+
+		if (theme === 'Transperent') document.body.style = 'background-color: transperet';
+		else if (theme === 'Biege') document.body.style = 'background-color: #FDF1E6';
+		else document.body.style = 'background-color: #1E1E1E';
 	}
 	changeTheme();
+
+	function handleMessage(event) {
+		value = event.detail.text;
+		addMsg();
+	}
+
 </script>
 
 <div class="container">
-<div class="chatBox" bind:this={divChat}>
-	{#each messages as message, i (message)}
-		<Message {message} />
-	{/each}
-</div>
-<div class="container-right">
-<textarea class="chatMsg" name="newMessage" bind:value="{value}"></textarea>
-<button class="chatMsg" on:click|preventDefault={addMsg} type="submit">Добавить</button>
-<select class="chatMsg" bind:value={theme} on:change={changeTheme}>
-	<option value="Transperent">Transperent</option>
-	<option value="Biege">Biege</option>
-	<option value="Black">Black</option>
-</select>
-</div>
+	<div class="chatContainer">
+		<div class="chatBox" bind:this={divChat}>
+			{#each messages as message, i (message)}
+				<Message {message} />
+			{/each}
+		</div>
+		<div class="fixedBoard"><Board on:message={handleMessage}/></div>
+	</div>
+	<div class="container-right">
+		<textarea class="chatMsg" name="newMessage" bind:value="{value}"></textarea>
+		<button class="chatMsg" on:click|preventDefault={addMsg} type="submit">Добавить</button>
+		<select class="chatMsg" bind:value={theme} on:change={changeTheme}>
+			<option value="Transperent">Transperent</option>
+			<option value="Biege">Biege</option>
+			<option value="Black">Black</option>
+		</select>
+		<button class="chatMsg" type="button">Click</button>
+	</div>
 </div>
 
-<style type="text/scss">
+<style>
+	.fixedBoard {
+		margin: 0px 32px 32px 32px;
+		width: 100%;
+	}
 	.container {
 		display: flex;
 	}
@@ -66,11 +84,17 @@
 		display: flex;
 		flex-direction: column;
 	}
-	.chatBox {
+	.chatContainer {
 		width: 100%;
-		height: 400px;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+	.chatBox {
+		height: 100%;
 		text-align: center;
-		margin: 10px auto;
+		margin: 32px;
 		overflow: auto;
 		flex-grow: 1;
 	}

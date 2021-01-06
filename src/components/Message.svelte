@@ -11,7 +11,8 @@
         theme: 'Transperent'
     }];
 
-    let sDate = message.date.getHours() + ':' + (message.date.getMinutes() < 10 ? '0' + message.date.getMinutes() : message.date.getMinutes());
+    //let sDate = message.date.getHours() + ':' + (message.date.getMinutes() < 10 ? '0' + message.date.getMinutes() : message.date.getMinutes());
+    let sDate = '00:00';
 </script>
 
 <div class="msg msg_{message.theme}">
