@@ -3,25 +3,30 @@
 a {
     text-decoration: none;
     font-weight: 700;
-    color: #235594;
 }
+.a_Transperent { color: #235594; }
+.a_Biege { color: #235594; }
+.a_Black { color: #5A92D8; }
+
 .avatar {
-    border: 1px solid #e1e1e1;
     border-radius: 50%;
     width: 34px; height: 34px;
 }
+.ava_Transperent { border: 1px solid rgba(50, 48, 46, 0.2); }
+.ava_Biege { border: 1px solid rgba(50, 48, 46, 0.2); }
+.ava_Black { border: 1px solid rgba(255, 255, 255, 0.2); }
+
 .msg {
     font-family: 'IBM Plex Sans', sans-serif;
-    color: #505050;
     font-size: 14px;
     line-height: 20px;
     text-align: left;
     display: flex;
     width: 100%;
 }
-.msg_Transperent { background-color: transparent; }
-.msg_Biege { background-color: #FDF1E6; }
-.msg_Black { background-color: #1E1E1E; }
+.msg_Transperent { color: #505050; background-color: transparent; }
+.msg_Biege { color: #65605C; background-color: #FDF1E6; }
+.msg_Black { color: #B2B2B2; background-color: #1E1E1E; }
 
 .msg-ava {
     position: relative;
@@ -35,6 +40,10 @@ a {
     left: 17px;
     bottom: 2px;
 }
+.msg-ava_Transperent::after { background-color: #e1e1e1; }
+.msg-ava_Biege::after { background-color: #EFE0D0 }
+.msg-ava_Black::after { background-color: #333; }
+
 .msg-block {
     margin-left: 22px;
 }
@@ -43,13 +52,21 @@ a {
     line-height: 18px;
     color: #8C223E;
 }
+.msg-caption_Transperent { color: #8C223E; }
+.msg-caption_Biege { color: #8C223E; }
+.msg-caption_Black { color: #D75B7C; }
+
 .msgDate {
     margin-left: 12px;
     margin-top: 2px;
     font-size: 11px;
     line-height: 14px;
-    color: #65605C;
+    color: rgba(101, 96, 92, 0.5);
 }
+.msgDate_Transperent { color: rgba(101, 96, 92, 0.5); }
+.msgDate_Biege { color: rgba(101, 96, 92, 0.5); }
+.msgDate_Black { color: #666666; }
+
 .msg-text {
     padding: 0;
     margin-top: 8px;

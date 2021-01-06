@@ -65,12 +65,12 @@
 <div class="container">
 <div class="chatBox" bind:this={divChat}>
 	{#each messages as message, i (message)}
-		<Message {message}/>
+		<Message {message} />
 	{/each}
 </div>
 <textarea class="chatMsg" name="newMessage" bind:value="{value}"></textarea>
 <button class="chatMsg" on:click|preventDefault={addMsg} type="submit">Добавить</button>
-<select bind:value={theme} on:change={changeTheme}>
+<select class="chatMsg" bind:value={theme} on:change={changeTheme}>
 	<option value="Transperent">Transperent</option>
 	<option value="Biege">Biege</option>
 	<option value="Black">Black</option>
