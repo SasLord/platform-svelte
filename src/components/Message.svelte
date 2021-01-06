@@ -1,14 +1,16 @@
 <script>
-    import { fade, fly } from 'svelte/transition';
+    import './message.css';
+    import { fly } from 'svelte/transition';
 
-    export let message = {
+    export let message = [{
         avatar: '',
         name: 'User Name',
         tag: '',
         text: 'Message',
         date: new Date(),
         theme: 'Transperent'
-    }
+    }];
+
     let sDate = message.date.getHours() + ':' + (message.date.getMinutes() < 10 ? '0' + message.date.getMinutes() : message.date.getMinutes());
 </script>
 
