@@ -77,7 +77,7 @@
 </select>
 </div>
 
-<style>
+<style type="text/scss">
 	.container {
 		display: flex;
 		flex-direction: column;
