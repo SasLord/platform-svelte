@@ -11,9 +11,20 @@
         theme: 'Transperent'
     }];
 
+    //message.data = new Date();
+    let month = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    let days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
     let sDate = message.date.getHours() + ':' + (message.date.getMinutes() < 10 ? '0' + message.date.getMinutes() : message.date.getMinutes());
+    let klDate;
+    if (message.tag === 'red') klDate = ' msg-colorRed'; else klDate ='';
+    if (message.date.getDay() === 0) klDate = ' msg-colorRed';
+    let tDate = message.date.getDate();
+    let ttDate = month[message.date.getMonth()] + ', ' + days[message.date.getDay()];
 </script>
 
+<!-- --- \\\\\ ---[ MESSAGE ]--- ///// --- -->
+
+{#if message.type === 'msg'}
 <div class="msg msg_{message.theme}">
     <div class="msg-ava msg-ava_{message.theme}" transition:fly="{{ y: -10, duration: 500 }}">
         {#if message.avatar}
@@ -33,3 +44,18 @@
         </div>
     </div>
 </div>
+
+<!-- --- \\\\\ ---[ DATE ]--- ///// --- -->
+
+{:else if message.type === 'date'}
+<div class="msg-date msg-date_{message.theme}">
+    <div class="msg-date-number msg-date-number_{message.theme} {klDate}">{tDate}</div>
+    <div class="msg-date-text">{ttDate}</div>
+</div>
+
+<!-- --- \\\\\ ---[ TEXT ]--- ///// --- -->
+
+{:else if message.type === 'text'}
+<div class="msg-div msg-div_{message.theme}">{message.text}</div>
+
+{/if}

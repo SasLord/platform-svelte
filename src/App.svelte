@@ -29,6 +29,7 @@
 			tag: '',
 			text: value,
 			date: new Date,
+			type: 'msg',
 			theme: theme
 		}];
 		value = '';
@@ -50,6 +51,10 @@
 
 </script>
 
+<svelte:head>
+<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@700&display=swap" rel="stylesheet">
+</svelte:head>
+
 <div class="container">
 	<div class="chatContainer">
 		<div class="chatBox" bind:this={divChat}>
@@ -67,7 +72,7 @@
 			<option value="Biege">Biege</option>
 			<option value="Black">Black</option>
 		</select>
-		<button class="chatMsg" type="button">Click</button>
+		<button class="chatMsg" type="button">Add Day</button>
 	</div>
 </div>
 

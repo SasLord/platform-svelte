@@ -9,6 +9,9 @@ export default {
         tag: { control: 'text' },
         text: { control: 'text' },
         date: { control: 'date' },
+        type: {
+            control: { type: 'select', options: ['msg', 'date', 'text'] },
+        },
         theme: {
             control: { type: 'select', options: ['Transperent', 'Biege', 'Black'] },
         },
@@ -30,6 +33,7 @@ const messageData = {
     tag: '',
     text: 'Message',
     date: new Date,
+    type: 'msg',
     theme: 'Transperent'
 };
 
@@ -44,3 +48,9 @@ Biege.args = { ...messageData, theme: 'Biege' };
 
 export const Black = Template.bind({});
 Black.args = { ...messageData, theme: 'Black' };
+
+export const dateDiv = Template.bind({});
+dateDiv.args = { ...messageData, type: 'date' };
+
+export const textDiv = Template.bind({});
+textDiv.args = { ...messageData, text: 'сегодня', type: 'text' };
