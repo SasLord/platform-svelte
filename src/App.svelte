@@ -74,7 +74,6 @@
 <style>
 	.fixedBoard {
 		margin: 0px 32px 32px 32px;
-		width: 100%;
 	}
 	.container {
 		display: flex;

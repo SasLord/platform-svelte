@@ -54,7 +54,6 @@
 .board {
     overflow: hidden;
     position: relative;
-    width: calc(100% - 64px);
     height: 145px;
     min-height: 145px;
     background-color: #F2F2F2;
@@ -63,7 +62,6 @@
     transition: .5s;
 }
 .board__resizer {
-    width: calc(100% - 2px);
     height: 3px;
     background-color: #E0E0E0;
     border: 1px solid #E0E0E0;
