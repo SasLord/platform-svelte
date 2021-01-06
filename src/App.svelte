@@ -99,7 +99,7 @@
 	}
 	.chatBox::-webkit-scrollbar { width: 5px; height: 3px;}
 	.chatBox::-webkit-scrollbar-button { display: none; background-color: #666; }
-	.chatBox::-webkit-scrollbar-track-piece { background-color: #fff;}
+	.chatBox::-webkit-scrollbar-track-piece { background-color: #ddd; border-radius: 2px;}
 	.chatBox::-webkit-scrollbar-thumb { height: 10px; background-color: #666; border-radius: 2px;}
 	.chatMsg {
 		width: 100%;

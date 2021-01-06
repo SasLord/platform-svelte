@@ -36,6 +36,9 @@ const messageData = {
 export const Default = Template.bind({});
 Default.args = { ...messageData };
 
+export const Tagged = Template.bind({});
+Tagged.args = { ...messageData, tag: '#Common' };
+
 export const Biege = Template.bind({});
 Biege.args = { ...messageData, theme: 'Biege' };
 

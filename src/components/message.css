@@ -59,14 +59,29 @@ a {
 
 .msgDate {
     margin-left: 12px;
-    margin-top: 2px;
     font-size: 11px;
-    line-height: 14px;
     color: rgba(101, 96, 92, 0.5);
 }
 .msgDate_Transperent { color: rgba(101, 96, 92, 0.5); }
 .msgDate_Biege { color: rgba(101, 96, 92, 0.5); }
 .msgDate_Black { color: #666666; }
+
+.msgAction {
+    margin-left: 5px;
+    color: rgba(0, 0, 0, 0.4);
+}
+.msgAction_Transperent { color: rgba(0, 0, 0, 0.4); }
+.msgAction_Biege { color: rgba(101, 96, 92, 0.5); }
+.msgAction_Black { color: rgba(255, 255, 255, 0.4); }
+
+.msgPlace {
+    margin-left: 5px;
+    font-weight: 500;
+    color: #666;
+}
+.msgPlace_Transperent { color: #666; }
+.msgPlace_Biege { color: #65605C; }
+.msgPlace_Black { color: #808080; }
 
 .msg-text {
     padding: 0;

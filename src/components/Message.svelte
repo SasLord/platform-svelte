@@ -11,8 +11,7 @@
         theme: 'Transperent'
     }];
 
-    //let sDate = message.date.getHours() + ':' + (message.date.getMinutes() < 10 ? '0' + message.date.getMinutes() : message.date.getMinutes());
-    let sDate = '00:00';
+    let sDate = message.date.getHours() + ':' + (message.date.getMinutes() < 10 ? '0' + message.date.getMinutes() : message.date.getMinutes());
 </script>
 
 <div class="msg msg_{message.theme}">
@@ -24,7 +23,11 @@
         {/if}
     </div>
     <div class="msg-block" transition:fly="{{ y: -10, duration: 500 }}">
-        <div class="msg-caption msg-caption_{message.theme}">{message.name}<span class="msgDate msgDate_{message.theme}">{sDate}</span></div>
+        {#if message.tag}
+            <div class="msg-caption msg-caption_{message.theme}">{message.name}<span class="msgAction msgAction_{message.theme}">оставил комментарий в</span><span class="msgPlace msgPlace_{message.theme}">{message.tag}</span><span class="msgDate msgDate_{message.theme}">{sDate}</span></div>
+        {:else}
+            <div class="msg-caption msg-caption_{message.theme}">{message.name}<span class="msgDate msgDate_{message.theme}">{sDate}</span></div>
+        {/if}
         <div class="msg-text">
             {@html message.text}
         </div>

@@ -8,7 +8,7 @@ export const archiveMessages = [{
 }, {
     avatar: 'https://platform.exhale24.ru/images/photo-2.png',
     name: 'Андрей Платов',
-    tag: '',
+    tag: '# Общее',
     text: '<p>наше</p><p>хм походу после всех переписываний исчело за неиспользованием</p><p>но думаю появится когда будем четче обрабатывать <a class="link-aSide-1" href="#">Ошибки</a></p>',
     date: new Date(2020, 11, 28, 10, 31),
     theme: ''
