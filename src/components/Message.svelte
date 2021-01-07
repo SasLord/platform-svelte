@@ -48,7 +48,7 @@
 <!-- --- \\\\\ ---[ DATE ]--- ///// --- -->
 
 {:else if message.type === 'date'}
-<div class="msg-date msg-date_{message.theme}">
+<div class="msg-date msg-date_{message.theme}" transition:fly="{{ y: -10, duration: 500 }}">
     <div class="msg-date-number msg-date-number_{message.theme} {klDate}">{tDate}</div>
     <div class="msg-date-text">{ttDate}</div>
 </div>
@@ -56,6 +56,8 @@
 <!-- --- \\\\\ ---[ TEXT ]--- ///// --- -->
 
 {:else if message.type === 'text'}
-<div class="msg-div msg-div_{message.theme}">{message.text}</div>
+<div class="msg-div msg-div_{message.theme}" transition:fly="{{ y: -10, duration: 500 }}">
+    {message.text}
+</div>
 
 {/if}

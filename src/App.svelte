@@ -22,17 +22,27 @@
 		if (autoscroll) divChat.scrollTo(0, divChat.scrollHeight);
 	});
 
-	function addMsg() {
+	function handleMessage(event) {
+		addMsg(event.detail.text);
+	}
+
+	function addMsg(t) {
 		messages = [...messages, {
 			avatar: '',
 			name: 'Local',
 			tag: '',
-			text: value,
+			text: t,
 			date: new Date,
 			type: 'msg',
 			theme: theme
 		}];
-		value = '';
+	}
+	function addDate() {
+		messages = [...messages, {
+			date: new Date,
+			type: 'date',
+			theme: theme
+		}];
 	}
 	function changeTheme () {
 		messages.map((msg) => msg.theme = theme );
@@ -43,11 +53,6 @@
 		else document.body.style = 'background-color: #1E1E1E';
 	}
 	changeTheme();
-
-	function handleMessage(event) {
-		value = event.detail.text;
-		addMsg();
-	}
 
 </script>
 
@@ -72,7 +77,7 @@
 			<option value="Biege">Biege</option>
 			<option value="Black">Black</option>
 		</select>
-		<button class="chatMsg" type="button">Add Day</button>
+		<button class="chatMsg" type="button" on:click={addDate}>Add Day</button>
 	</div>
 </div>
 
@@ -82,6 +87,8 @@
 	}
 	.container {
 		display: flex;
+		width: 100%;
+		height: 100%;
 	}
 	.container-right {
 		width: 400px;
@@ -90,7 +97,6 @@
 	}
 	.chatContainer {
 		width: 100%;
-		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		position: relative;
