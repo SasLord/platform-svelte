@@ -18,7 +18,7 @@
 		window.addEventListener('mouseup', handleMouseup);
 	}
 	function handleMousemove(event) {
-		divFly.style = 'top: ' + (event.clientY - y) + 'px; left: ' + (event.clientX - x) + 'px;';
+		divFly.style = 'top: ' + (event.clientY - y - 2) + 'px; left: ' + (event.clientX - x - 2) + 'px;';
 	}
 	function handleMouseup(event) {
 		divHider.style = 'display: none';
@@ -32,7 +32,7 @@
 </svelte:head>
 
 <div class="container">
-	<div class="flyContainer" bind:this={divFly}>
+	<div class="flyContainer noselect" bind:this={divFly}>
 		<div class="header" on:mousedown={mousedown}></div>
 		<!--<textarea class="chatMsg" name="newMessage" bind:value="{value}"></textarea>
 		<button class="chatMsg" on:click|preventDefault={addMsg} type="submit">Добавить</button>-->
@@ -107,5 +107,16 @@
 		font-size: 12px;
 		padding: 0;
 		width: calc(100% - 20px);
+		outline-style: none;
 	}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 </style>
