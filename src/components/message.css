@@ -11,13 +11,14 @@ a {
 
 .avatar {
     border-radius: 50%;
-    width: 34px; height: 34px;
+    width: 32px; height: 32px;
 }
 .ava_Transperent { border: 1px solid rgba(50, 48, 46, 0.2); }
 .ava_Biege { border: 1px solid rgba(50, 48, 46, 0.2); }
 .ava_Black { border: 1px solid rgba(255, 255, 255, 0.2); }
 
 .msg {
+    box-sizing: border-box;
     font-family: 'IBM Plex Sans', sans-serif;
     font-size: 14px;
     line-height: 20px;
@@ -37,13 +38,13 @@ a {
     content: '';
     background-color: #e1e1e1;
     width: 1px;
-    height: calc(100% - 40px);
-    left: 17px;
+    height: calc(100% - 38px);
+    left: 16px;
     bottom: 2px;
 }
-.msg-ava_Transperent::after, .msg-date-number_Transperent::after, .msg-div_Transperent::after { background-color: #e1e1e1; }
-.msg-ava_Biege::after, .msg-date-number_Biege::after, .msg-div_Biege::after { background-color: #EFE0D0 }
-.msg-ava_Black::after, .msg-date-number_Black::after, .msg-div_Black::after { background-color: #333; }
+.msg-ava_Transperent::after, .msg-div_Transperent::after { background-color: #e1e1e1; }
+.msg-ava_Biege::after, .msg-div_Biege::after { background-color: #EFE0D0 }
+.msg-ava_Black::after, .msg-div_Black::after { background-color: #333; }
 
 .msg-block {
     margin-left: 22px;
@@ -116,7 +117,7 @@ a {
     padding-left: 1px;
     text-align: center;
     height: 64px;
-    width: 34px;
+    width: 32px;
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
@@ -145,10 +146,14 @@ a {
     width: 1px;
     height: calc(100% + 16px);
     background-color: #e1e1e1;
-    left: 17px;
+    left: 16px;
     bottom: 2px;
     z-index: -2;
 }
+.msg-date-number_Transperent::after { background-color: #e1e1e1; }
+.msg-date-number_Biege::after { background-color: #EFE0D0 }
+.msg-date-number_Black::after { background-color: #333; }
+
 
 .msg-date-text {
     padding-top: 9px;
@@ -179,6 +184,6 @@ a {
     content: '';
     width: 1px;
     height: 100%;
-    left: 17px;
+    left: 16px;
     bottom: 2px;
 }

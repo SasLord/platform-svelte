@@ -1,59 +1,30 @@
 <script>
-	import Message from './components/Message.svelte';
-	import Board from './components/Board.svelte';
-	import { beforeUpdate, afterUpdate } from 'svelte';
-	import { archiveMessages } from './components/message.storage.js';
+	import Channel from './components/Channel.svelte';
 
 	document.body.style = 'margin: 0; padding: 0;';
-
-	export let theme;
-	theme = 'Transperent';
-
-	let messages = [];
-	messages = archiveMessages;
+	
 	let value = '';
+	let selTheme = 'Transperent';
 
-	let divChat;
-	let autoscroll;
-	beforeUpdate(() => {
-		autoscroll = divChat && (divChat.offsetHeight + divChat.scrollTop) > (divChat.scrollHeight - 20);
-	});
-	afterUpdate(() => {
-		if (autoscroll) divChat.scrollTo(0, divChat.scrollHeight);
-	});
+	let x;
+	let y;
+	let divFly, divHider;
 
-	function handleMessage(event) {
-		addMsg(event.detail.text);
+	function mousedown (event) {
+		x = event.offsetX;
+		y = event.offsetY;
+		divHider.style = 'display: block';
+		window.addEventListener('mousemove', handleMousemove);
+		window.addEventListener('mouseup', handleMouseup);
 	}
-
-	function addMsg(t) {
-		messages = [...messages, {
-			avatar: '',
-			name: 'Local',
-			tag: '',
-			text: t,
-			date: new Date,
-			type: 'msg',
-			theme: theme
-		}];
+	function handleMousemove(event) {
+		divFly.style = 'top: ' + (event.clientY - y) + 'px; left: ' + (event.clientX - x) + 'px;';
 	}
-	function addDate() {
-		messages = [...messages, {
-			date: new Date,
-			type: 'date',
-			theme: theme
-		}];
+	function handleMouseup(event) {
+		divHider.style = 'display: none';
+		window.removeEventListener('mousemove', handleMousemove);
+		window.removeEventListener('mouseup', handleMouseup);
 	}
-	function changeTheme () {
-		messages.map((msg) => msg.theme = theme );
-		messages = messages;
-
-		if (theme === 'Transperent') document.body.style = 'background-color: transperet';
-		else if (theme === 'Biege') document.body.style = 'background-color: #FDF1E6';
-		else document.body.style = 'background-color: #1E1E1E';
-	}
-	changeTheme();
-
 </script>
 
 <svelte:head>
@@ -61,59 +32,80 @@
 </svelte:head>
 
 <div class="container">
-	<div class="chatContainer">
-		<div class="chatBox" bind:this={divChat}>
-			{#each messages as message, i (message)}
-				<Message {message} />
-			{/each}
-		</div>
-		<div class="fixedBoard"><Board on:message={handleMessage}/></div>
-	</div>
-	<div class="container-right">
-		<textarea class="chatMsg" name="newMessage" bind:value="{value}"></textarea>
-		<button class="chatMsg" on:click|preventDefault={addMsg} type="submit">Добавить</button>
-		<select class="chatMsg" bind:value={theme} on:change={changeTheme}>
+	<div class="flyContainer" bind:this={divFly}>
+		<div class="header" on:mousedown={mousedown}></div>
+		<!--<textarea class="chatMsg" name="newMessage" bind:value="{value}"></textarea>
+		<button class="chatMsg" on:click|preventDefault={addMsg} type="submit">Добавить</button>-->
+		<div class="chatMsg label">Theme:</div>
+		<select class="chatMsg sel" bind:value={selTheme} on:change="{Channel.theme = selTheme}">
 			<option value="Transperent">Transperent</option>
 			<option value="Biege">Biege</option>
 			<option value="Black">Black</option>
 		</select>
-		<button class="chatMsg" type="button" on:click={addDate}>Add Day</button>
 	</div>
+	<div bind:this={divHider} class="hider"></div>
+	<Channel theme={selTheme} />
 </div>
 
 <style>
-	.fixedBoard {
-		margin: 0px 32px 32px 32px;
-	}
+
 	.container {
-		display: flex;
-		width: 100%;
-		height: 100%;
-	}
-	.container-right {
-		width: 400px;
-		display: flex;
-		flex-direction: column;
-	}
-	.chatContainer {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
 		position: relative;
-	}
-	.chatBox {
+		display: flex;
+		width: 100%;
 		height: 100%;
-		text-align: center;
-		margin: 32px;
-		overflow: auto;
-		flex-grow: 1;
 	}
-	.chatBox::-webkit-scrollbar { width: 5px; height: 3px;}
-	.chatBox::-webkit-scrollbar-button { display: none; background-color: #666; }
-	.chatBox::-webkit-scrollbar-track-piece { background-color: #ddd; border-radius: 2px;}
-	.chatBox::-webkit-scrollbar-thumb { height: 10px; background-color: #666; border-radius: 2px;}
+	.hider {
+		display: none;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(255, 255, 255, 0.3);
+		z-index: 90;
+	}
+	.flyContainer {
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-size: 12px;
+		line-height: 20px;
+		text-align: center;
+		background-color: #F2F2F2;
+		border: 1px solid #E0E0E0;
+		border-radius: 6px;
+		padding-bottom: 10px;
+		position: absolute;
+		top: calc(100% - 80px);
+		left: calc(100% - 400px);
+		width: 300px;
+		display: flex;
+		flex-direction: column;
+
+		z-index: 100;
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	}
+	.header {
+		width: calc(100% - 2px);
+		height: 5px;
+		background-color: #E0E0E0;
+		border: 1px solid #E0E0E0;
+		border-radius: 4px 4px 0px 0px;
+		cursor: pointer;
+		z-index: 200;
+	}
+	.header:hover {
+		background-color: #aaa;
+		border: 1px solid #aaa;
+	}
 	.chatMsg {
 		width: 100%;
 		margin: 0 auto;
+	}
+	.sel {
+		font-size: 12px;
+		padding: 0;
+		width: calc(100% - 20px);
 	}
 </style>
