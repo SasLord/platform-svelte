@@ -33,13 +33,6 @@
 		}];
 		console.log(t);
 	}
-	function addDate() {
-		messages = [...messages, {
-			date: new Date,
-			type: 'date',
-			theme: theme
-		}];
-	}
 	function changeSelTheme (t) {
 		messages.map((msg) => msg.theme = t );
 		messages = messages;
