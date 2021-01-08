@@ -1,10 +1,20 @@
 <script>
+	import Spaces from './Spaces.svelte';
 	import Caption from './Caption.svelte';
 	import Message from './Message.svelte';
 	import Board from './Board.svelte';
 	import { beforeUpdate, afterUpdate } from 'svelte';
-	import { archiveMessages } from './stores.js';
+	import { spaceList, archiveMessages } from './stores.js';
 	
+	let selChannel = 'all';
+	let titleChannel = '# ';
+	function changeChannel() {
+		let finded;
+		$spaceList.map((spc) => {if (spc.link === selChannel) finded = spc});
+		titleChannel = '# ' + finded.name;
+	}
+	changeChannel();
+
 	let messages = [];
 	messages = archiveMessages;
 
@@ -17,10 +27,6 @@
 		if (autoscroll) divChat.scrollTo(0, divChat.scrollHeight);
 	});
 
-	function handleMessage(event) {
-		addMsg(event.detail.text);
-	}
-
 	function addMsg(t) {
 		messages = [...messages, {
 			avatar: '',
@@ -31,7 +37,6 @@
 			type: 'msg',
 			theme: theme
 		}];
-		console.log(t);
 	}
 	function changeSelTheme (t) {
 		messages.map((msg) => msg.theme = t );
@@ -39,21 +44,27 @@
 	}
 
 	export let theme = 'Transperent';
-	$: changeSelTheme(theme);
+	changeSelTheme(theme);
 
 </script>
 
-<div class="channelContainer ch_{theme}">
-	<Caption title="# Общее" {theme} />
-	<div class="chatBox" bind:this={divChat}>
-		{#each messages as message, i (message)}
-			<Message {message} />
-		{/each}
+<div class="container">
+	<Spaces {theme} active={selChannel} on:select={(event) => { selChannel = event.detail.channel; changeChannel()}} />
+	<div class="channelContainer ch_{theme}">
+		<Caption title={titleChannel} {theme} />
+		<div class="chatBox" bind:this={divChat}>
+			{#each messages as message, i (message)}
+				<Message {message} />
+			{/each}
+		</div>
+		<div class="fixedBoard"><Board on:message={(event) => addMsg(event.detail.text)}/></div>
 	</div>
-	<div class="fixedBoard"><Board on:message={handleMessage}/></div>
 </div>
 
 <style>
+	.container {
+		display: flex;
+	}
 	.fixedBoard {
 		margin: 0px 32px 32px 32px;
 	}
