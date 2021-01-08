@@ -34,6 +34,7 @@
 <div class="flyContainer noselect" bind:this={divFly}>
     <div class="header" on:mousedown={mousedown}></div>
     <div class="chatMsg label">Theme:</div>
+    <!-- svelte-ignore a11y-no-onchange -->
     <select class="chatMsg sel" bind:value={theme} on:change="{onChange}">
         <option value="Transperent">Transperent</option>
         <option value="Biege">Biege</option>

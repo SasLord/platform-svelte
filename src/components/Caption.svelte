@@ -25,9 +25,9 @@
     justify-content: space-between;
     align-items: center;
 }
-.bb_Transperent { background-color: transparent; border-bottom: 1px solid #E1E1E1; }
-.bb_Biege { background-color: #FDF1E6; border-bottom: 1px solid #EFE0D0; }
-.bb_Black { background-color: #1E1E1E; border-bottom: 1px solid #333; }
+.bb_Transperent { background-color: transparent; border-bottom: 1px solid #E1E1E1; box-shadow: inset 1px 0px 0px #E1E1E1; }
+.bb_Biege { background-color: #FDF1E6; border-bottom: 1px solid #EFE0D0; box-shadow: inset 1px 0px 0px #EFE0D0; }
+.bb_Black { background-color: #1E1E1E; border-bottom: 1px solid #333; box-shadow: inset 1px 0px 0px #333333; }
 
 .members {
     display: flex;

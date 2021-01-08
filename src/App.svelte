@@ -12,8 +12,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@700&display=swap" rel="stylesheet">
 </svelte:head>
 
+<ThemeSelector theme={selTheme} on:change={(event) => selTheme = event.detail.theme} />
 <div class="container">
-	<ThemeSelector theme={selTheme} on:change={(event) => selTheme = event.detail.theme} />
 	<Channel theme={selTheme} />
 </div>
 

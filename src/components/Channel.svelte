@@ -63,9 +63,9 @@
 		flex-direction: column;
 		position: relative;
 	}
-	.ch_Transperent { background-color: transparent; }
-	.ch_Biege { background-color: #FDF1E6; }
-	.ch_Black { background-color: #1E1E1E; }
+	.ch_Transperent { background-color: transparent; box-shadow: inset 1px 0px 0px #E1E1E1; }
+	.ch_Biege { background-color: #FDF1E6; box-shadow: inset 1px 0px 0px #EFE0D0; }
+	.ch_Black { background-color: #1E1E1E; box-shadow: inset 1px 0px 0px #333333; }
 
 	.chatBox {
 		height: 100%;
