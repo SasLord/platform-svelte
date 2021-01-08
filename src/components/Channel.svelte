@@ -3,7 +3,7 @@
 	import Message from './Message.svelte';
 	import Board from './Board.svelte';
 	import { beforeUpdate, afterUpdate } from 'svelte';
-	import { archiveMessages } from './message.storage.js';
+	import { archiveMessages } from './stores.js';
 	
 	let messages = [];
 	messages = archiveMessages;

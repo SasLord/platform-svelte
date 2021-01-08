@@ -10,7 +10,7 @@
         <img class="avatar b_{theme}" src="https://platform.exhale24.ru/images/photo-3.png" alt="">
         <img class="avatar b_{theme}" src="https://platform.exhale24.ru/images/photo-1.png" alt="">
         <span class="members-counter b_{theme}">15</span>
-        <svg class="members-btn" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" rx="8" fill="#CCCCCC"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4H7V7H4V9H7V12H9V9H12V7H9V4Z" fill="white"/></svg>
+        <svg class="members-btn" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect class="bbC_{theme}" width="16" height="16" rx="8" fill="#CCCCCC"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9 4H7V7H4V9H7V12H9V9H12V7H9V4Z" fill="white"/></svg>
     </div>
 </div>
 
@@ -70,5 +70,9 @@
 .t_Transperent { color: #000; }
 .t_Biege { color: #000; }
 .t_Black { color: #fff; }
+
+.bbC_Transperent { fill: #ccc; }
+.bbC_Biege { fill: #CAC1B8; }
+.bbC_Black { fill: #333; }
 
 </style>
