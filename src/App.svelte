@@ -1,6 +1,8 @@
 <script>
 	import ThemeSelector from './components/ThemeSelector.svelte';
 	import Channel from './components/Channel.svelte';
+	import AppsPanel from './components/panels/AppsPanel.svelte';
+	import ASidePanel from './components/panels/ASidePanel.svelte';
 
 	document.body.style = 'margin: 0; padding: 0;';
 	
@@ -14,7 +16,9 @@
 
 <ThemeSelector theme={selTheme} on:change={(event) => selTheme = event.detail.theme} />
 <div class="container">
+	<AppsPanel theme={selTheme} />
 	<Channel theme={selTheme} />
+	<ASidePanel theme={selTheme} />
 </div>
 
 <style>
