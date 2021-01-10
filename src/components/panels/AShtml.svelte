@@ -1,24 +1,11 @@
 <script>
-    import ASMeetInfo from './ASMeetInfo.svelte';
-    import ASMemberList from './ASMemberList.svelte';
-    import ASMeetDescription from './ASMeetDescription.svelte';
-
     export let theme = 'Transperent';
-    export let meet = {
-        meetDate: new Date(),
-        meetTime: 'XX:XX - XX:XX',
-        members: [{
-            src: '', name: '', status: 'accept'
-        }],
-        meetDesc: '<p>Meeting...</p>',
-    };
+    export let textHtml = 'Hello!';
 
 </script>
 
 <div class="hContainer hc_{theme}">
-    <ASMeetInfo {theme} meetDate={meet.meetDate} meetTime={meet.meetTime} />
-    <ASMemberList {theme} members={meet.members} />
-    <ASMeetDescription {theme} desc={meet.meetDesc} />
+    {@html textHtml}
 </div>
 
 <style>
@@ -32,8 +19,6 @@
 
         box-sizing: border-box;
         overflow: auto;
-        display: flex;
-        flex-direction: column;
     }
 	.hc_Transperent { background-color: transparent; }
 	.hc_Biege { background-color: #FDF1E6; }
