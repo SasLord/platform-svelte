@@ -54,10 +54,10 @@
 		<Caption title={titleChannel} {theme} />
 		<div class="chatBox" bind:this={divChat}>
 			{#each messages as message, i (message)}
-				<Message {message} />
+				<Message {message} {theme} />
 			{/each}
 		</div>
-		<div class="fixedBoard"><Board on:message={(event) => addMsg(event.detail.text)}/></div>
+		<div class="fixedBoard"><Board {theme} on:message={(event) => addMsg(event.detail.text)}/></div>
 	</div>
 </div>
 

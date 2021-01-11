@@ -20,8 +20,8 @@
         display: flex;
         flex-direction: column;
     }
-	.hc_Transperent { background-color: transparent; }
-	.hc_Biege { background-color: #FDF1E6; }
-    .hc_Black { background-color: #1E1E1E; }
+	.hc_Transperent { color: #505050; background-color: transparent; }
+	.hc_Biege { color: #65605c; background-color: #FDF1E6; }
+    .hc_Black { color: #b2b2b2; background-color: #1E1E1E; }
 
 </style>

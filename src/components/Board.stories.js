@@ -1,18 +1,25 @@
-import Board from './Board.svelte';
+import Board from "./Board.svelte";
 
 export default {
-  title: 'Chat/Board',
+  title: "Chat/Board",
   component: Board,
   argTypes: {
-    onMessage: { action: 'onMessage' },
+    theme: {
+      control: { type: "select", options: ["Transperent", "Biege", "Black"] },
+    },
+    onMessage: { action: "onMessage" },
   },
 };
 
-const Template = ({ onMessage }) => ({
+const Template = ({ onMessage, ...args }) => ({
   Component: Board,
+  props: args,
   on: {
     message: onMessage,
   },
 });
 
 export const defaultBoard = Template.bind({});
+defaultBoard.args = {
+  theme: "Transperent",
+};
