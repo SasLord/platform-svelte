@@ -67,8 +67,8 @@
 		padding-bottom: 10px;
 		position: absolute;
 		top: calc(100% - 80px);
-		left: calc(100% - 400px);
-		width: 300px;
+		left: 20px;
+		width: 200px;
 		display: flex;
 		flex-direction: column;
 

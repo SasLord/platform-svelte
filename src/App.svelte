@@ -7,6 +7,11 @@
 	document.body.style = 'margin: 0; padding: 0;';
 	
 	let selTheme = 'Transperent';
+	let aSide = true;
+
+	function aSideClose(event) {
+		if (event.detail.click === 'close') aSide = !aSide;
+	}
 
 </script>
 
@@ -18,7 +23,7 @@
 <div class="container">
 	<AppsPanel theme={selTheme} />
 	<Channel theme={selTheme} />
-	<ASidePanel theme={selTheme} />
+	<div class={(aSide) ? 'aSide' : 'aSideHide'}><ASidePanel theme={selTheme} on:action={aSideClose} /></div>
 </div>
 
 <style>
@@ -29,5 +34,14 @@
 		width: 100%;
 		height: 100%;
 	}
+	.aSide {
+		display: block;
+		box-sizing: border-box;
+		width: 404px;
+		min-width: 404px;
+		max-width: 404px;
+		height: 100vh;
+	}
+	.aSideHide { display: none; }
 
 </style>

@@ -1,6 +1,16 @@
 <script>
 	import './message.css';
 	import { fly } from 'svelte/transition';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
+	function actionLink() {
+		alert('Link');
+		/*dispatch('action', {
+			click: 'close'
+		});*/
+	}
 
 	export let message = [{
 		avatar: '',
